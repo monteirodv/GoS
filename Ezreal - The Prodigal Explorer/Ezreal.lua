@@ -73,5 +73,5 @@ Callback.Add('Tick',function()
 	if Config.Key.Combo:Value()  then
      Combo()
 	 end
-end
+end)
 
