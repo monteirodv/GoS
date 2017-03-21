@@ -66,6 +66,7 @@ function Combo()
 	local Qhit = target:GetPrediction(Q.Speed, Q.Delay)
 	Control.CastSpell(HK_Q, Qhit)
 	end
+		end
 
 end
 Callback.Add('Tick',function()
