@@ -91,7 +91,7 @@ end
 function Pantheon:Harass()
 	if(myHero.mana/myHero.maxMana >= self.Menu.Harass.HarassMana:Value()/100) then
 	local qtarget = self:GetTarget(Q.range)
-if qtarget and self.Menu.Harass.HarassQ:Value() and  target.distance <= Q.range and self:CanCast(_Q)then
+if qtarget and self.Menu.Harass.HarassQ:Value() and  qtargettarget.distance <= Q.range and self:CanCast(_Q)then
 local castPos = qtarget
 self:CastQ(castPos)
 end
