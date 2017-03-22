@@ -85,7 +85,7 @@ end
 end
 
 local etarget = self:GetTarget(E.range)
-if etarget and self.Menu.Combo.ComboE:Value() and self:CanCast(_E)then
+if etarget and self.Menu.Combo.ComboE:Value() and self:CanCast(_E) and etarget.distance <= Q.range then
 local castPos = etarget:GetPrediction(E.Speed, E.Delay)
 self:CastE(castPos)
 end
@@ -93,8 +93,8 @@ end
 
 local rtarget = self:GetTarget(R.range)
 if rtarget and self.Menu.Combo.ComboR:Value() and self:CanCast(_R)then
-if rtarget:GetCollision(R.Radius, R.Speed, W.Delay) == 0 then
-local castPos = wtarget:GetPrediction(R.Speed, R.Delay)
+if rtarget:GetCollision(R.Radius, R.Speed, R.Delay) == 0 then
+local castPos = rtarget:GetPrediction(R.Speed, R.Delay)
 self:CastR(castPos)
 end
 end
@@ -210,7 +210,7 @@ function Ezreal:GetFarmTarget(range)
     local target
     for j = 1,Game.MinionCount() do
         local minion = Game.Minion(j)
-        if self:IsValidTarget(minion, range) and minion.team ~= myHero.team then
+        if minion.isTargetable and minion.distance <= Q.range and minion.team ~= myHero.team then
             target = minion
             break
         end
