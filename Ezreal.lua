@@ -101,7 +101,6 @@ end
 end
 
 
-end
 
 function Ezreal:Harass()
     -- HARASS LOGIC HERE
