@@ -123,7 +123,7 @@ local qMinion
 			end
 		end
 	end
-end
+
 
 function Pantheon:LastHit()
     -- LASTHIT LOGIC HERE
