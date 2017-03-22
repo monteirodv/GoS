@@ -15,7 +15,7 @@ end
 function Pantheon:LoadSpells()
 Q = {Delay = 0.25, Range = 600}
 W = {Delay = 0.25, Range = 600} 
-E = {Delay = 0.25, Range = 400}
+E = {Delay = 0.25, Range = 600}
 end
 
 function Pantheon:LoadMenu()
