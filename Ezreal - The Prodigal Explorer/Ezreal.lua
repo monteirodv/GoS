@@ -1,7 +1,10 @@
 if myHero.charName ~= "Ezreal" then return end
 require "DamageLib"
 
-Menu = MenuElement({type = MENU, id = "Ezreal", name = "Ezreal - The Prodigal Explorer", lefticon="http://pt.seaicons.com/wp-content/uploads/2015/07/Ezreal-Pulsefire-icon.png"})
+-- Menu
+Menu = MenuElement({type = MENU, id = "AlqoholicEzreal", name = "Alqohol - AlqoholicEzreal", lefticon="https://cdn.discordapp.com/emojis/249237025754972171.png"})
+
+-- [[Keys]]
 Menu:MenuElement({type = MENU, id = "Key", name = "Key Settings"})
 Menu.Key:MenuElement({id = "ComboKey", name = "Combo Key", key = 32})
 Menu.Key:MenuElement({id = "HarassKey", name = "Harass Key", key = 67})
