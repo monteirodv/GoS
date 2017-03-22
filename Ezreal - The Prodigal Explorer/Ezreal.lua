@@ -2,11 +2,11 @@ if myHero.charName ~= "Ezreal" then return end
 require "DamageLib"
 
 Menu = MenuElement({type = MENU, id = "Ezreal", name = "Ezreal - The Prodigal Explorer", lefticon="http://pt.seaicons.com/wp-content/uploads/2015/07/Ezreal-Pulsefire-icon.png"})
-Menu:MenuElement({type = MENU, id = "HotKeys", name = "HotKeys"})
-Menu.Key:MenuElement({id = "Combo", name = "Combo", key = 32})
-Menu.Key:MenuElement({id = "Harass", name = "Harass", key = 67})
-Menu.Key:MenuElement({id = "LaneClear", name = "Farm", key = 86})
-Menu.Key:MenuElement({id = "LastHit", name = "Last Hit", key = 88})
+Menu:MenuElement({type = MENU, id = "Key", name = "Key Settings"})
+Menu.Key:MenuElement({id = "ComboKey", name = "Combo Key", key = 32})
+Menu.Key:MenuElement({id = "HarassKey", name = "Harass Key", key = 67})
+Menu.Key:MenuElement({id = "FarmKey", name = "Farm Key", key = 86})
+Menu.Key:MenuElement({id = "LastHitKey", name = "Last Hit Key", key = 88})
 
 Menu:MenuElement({type = MENU, id = "Combo", name = "Combo"})
 Menu.Combo:MenuElement({id = "ComboQ", name = "Use Q", value = true})
