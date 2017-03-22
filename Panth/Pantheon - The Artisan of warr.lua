@@ -79,7 +79,7 @@ end
 
 
 local etarget = self:GetTarget(E.range)
-if etarget and self.Menu.Combo.ComboE:Value() and self:CanCast(_E)then
+if etarget and self.Menu.Combo.ComboE:Value() and not self:CanCast(_W) and self:CanCast(_E)then
 local castPos = etarget
 self:CastE(castPos)
 end
@@ -97,10 +97,7 @@ self:CastQ(castPos)
 end
 end
 
-local etarget = self:GetTarget(E.range)
-if etarget and self.Menu.Harass.HarassE:Value() and self:CanCast(_E)then
-local castPos = etarget
-self:CastE(castPos)
+
 end
 end
 
