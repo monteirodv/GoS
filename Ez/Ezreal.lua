@@ -92,24 +92,31 @@ end
 
 function Ezreal:CastQ(position)
     if position then
+	    Control.SetCursorPos(position)
         Control.CastSpell(HK_Q, position)
     end
 end
 
 function Ezreal:CastW(position)
     if position then
+		    Control.SetCursorPos(position)
+
         Control.CastSpell(HK_W, position)
     end
 end
 
 function Ezreal:CastE(position)
     if position then
+		    Control.SetCursorPos(position)
+
         Control.CastSpell(HK_E, position)
     end
 end
 
 function Ezreal:CastR(target)
     if target then
+		    Control.SetCursorPos(position)
+
         Control.CastSpell(HK_R, target)
     end
 end
