@@ -106,24 +106,6 @@ end
 
 
 
-if (myHero.mana/myHero.maxMana >= self.Menu.Farm.FarmMana:Value()/100) then
-local qMinion
-		if self:CanCast(_Q) then
-			for j = 1,Game.MinionCount() do
-        local minion = Game.Minion(j)
-        if minion.isTargetable and not minion.dead and minion.distance <= Q.Range and minion.team ~= myHero.team then
-            qMinion = minion
-            break
-        end
-    end
-			if qMinion then
-				local qMinPos = qMinion:GetPrediction(Q.Speed, Q.Delay)
-					    Control.SetCursorPos(qMinPos)
-				Control.CastSpell(HK_Q, qMinPos)
-			end
-		end
-	end
-
 
 function Pantheon:LastHit()
     -- LASTHIT LOGIC HERE
