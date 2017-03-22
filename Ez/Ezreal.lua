@@ -121,7 +121,7 @@ local qMinion
 		if self:CanCast(_Q) then
 			for j = 1,Game.MinionCount() do
         local minion = Game.Minion(j)
-        if minion.isTargetable and not minion.dead and minion.distance <= Q.range and minion.team ~= myHero.team then
+        if minion.isTargetable and not minion.dead and minion.distance <= Q.Range and minion.team ~= myHero.team then
             Qminion = minion
             break
         end
