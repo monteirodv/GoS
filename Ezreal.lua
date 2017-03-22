@@ -86,8 +86,7 @@ end
 
 local etarget = self:GetTarget(E.range)
 if etarget and self.Menu.Combo.ComboE:Value() and self:CanCast(_E)then
-if etarget:GetCollision(E.Radius, E.Speed, E.Delay) == 0 then
-local castPos = etarget:GetPrediction(E.Speed, E.Delay)
+local castPos = etarget
 self:CastE(castPos)
 end
 
