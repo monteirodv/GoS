@@ -128,7 +128,7 @@ local qMinion
     end
 			if qMinion then
 				local qMinPos = qMinion:GetPrediction(Q.Speed, Q.Delay)
-					   -- Control.SetCursorPos(qMinPos)
+					    Control.SetCursorPos(qMinPos)
 				Control.CastSpell(HK_Q, qMinPos)
 			end
 		end
