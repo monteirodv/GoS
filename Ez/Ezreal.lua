@@ -86,7 +86,7 @@ end
 
 local etarget = self:GetTarget(E.range)
 if etarget and self.Menu.Combo.ComboE:Value() and self:CanCast(_E)then
-local castPos = etarget.position
+local castPos = etarget:GetPrediction(E.Speed, E.Delay)
 self:CastE(castPos)
 end
 
