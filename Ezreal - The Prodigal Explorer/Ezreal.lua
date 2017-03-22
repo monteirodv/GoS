@@ -44,35 +44,58 @@ Q = {Delay = 0.25, Radius = 60, Range = 1150, Speed = 2000, Collision = true}
 W = {Delay = 0.25, Radius = 80, Range = 1000, Speed = 2000, Collision = false}
 E = {Delay = 0.25, Range = 475, Speed = math.max, width = 1}
 R = {Delay = 1, Radius = 160, Range = 3000, Speed = 2000, Collision = false}
-
-function GetTarget(targetRange)
-	local result
+function IsValidTarget(obj, spellRange)
+	return obj ~= nil and obj.valid and obj.visible and not obj.dead and obj.isTargetable and obj.distance <= spellRange
+end
+function GetTarget(range)
+	local result = nil
+	local N = 0
 	for i = 1,Game.HeroCount()  do
-		local hero = Game.Hero(i)
-		if isValidTarget(hero, targetRange) and hero.team ~= myHero.team then
-      		result = hero
-      		break
+		local hero = Game.Hero(i)	
+		if ValidTarget(hero,range) and hero.team ~= myHero.team then
+			local dmgtohero = CalcMagicalDamage(myHero,hero,100)
+			local tokill = hero.health/dmgtohero
+			if tokill > N or result == nil then
+				result = hero
+			end
 		end
 	end
 	return result
 end
+function ValidTarget(unit,range,from)
+	from = from or myHero.pos
+	range = range or math.huge
+	return unit and unit.valid and not unit.dead and unit.visible and unit.isTargetable and GetDistanceSqr(unit.pos,from) <= range*range
+end
 function isReady(slot)
-	return (myHero:GetSpellData(slot).currentCd == 0) and (myHero:GetSpellData(spellSlot).mana < myHero.mana) and (myHero:GetSpellData(slot).level >= 1) -- Thanks MeoBeo
+	return Game.CanUseSpell(slot) == READY
+end
+function GetFarmTarget(minionRange)
+	local getFarmTarget
+	for j = 1,Game.MinionCount()	do
+		local minion = Game.Minion(j)
+		if isValidTarget(minion, minionRange) and minion.team ~= myHero.team then
+      		getFarmTarget = minion
+      		break
+		end
+	end
+	return getFarmTarget
+end
+
+function CanCast(spellSlot)
+	return self:IsReady(spellSlot) and self:CheckMana(spellSlot)
 end
 function Combo()
-    if isReady(_Q) and Menu.Combo.ComboQ:Value() then
-	target = GetTarget(Q.Range)
-	if target and target:GetCollision(Q.Radius, Q.Speed, Q.Delay) == 0 then
-	local Qhit = target:GetPrediction(Q.Speed, Q.Delay)
-	Control.CastSpell(HK_Q, Qhit)
+	local qtarget = GetTarget(Q.Range)	
+	if qtarget and Game.CanUseSpell(_Q) == READY then
+		CastQ(qtarget)
 	end
-		end
 
 end
-Callback.Add('Tick',function()
+function OnTick()
 
 	if Config.Key.Combo:Value()  then
      Combo()
 	 end
-end)
+end
 
