@@ -118,7 +118,7 @@ end
 function Ezreal:Farm()
 if (myHero.mana/myHero.maxMana >= self.Menu.Farm.FarmMana:Value()/100) then
 		if self:CanCast(_Q) then
-			local qMinion = GetFarmTarget(Q.Range)
+			local qMinion = self:GetFarmTarget(Q.Range)
 			if qMinion then
 				local qMinPos = qMinion:GetPrediction(Q.Speed, Q.Delay)
 					    Control.SetCursorPos(qMinPos)
