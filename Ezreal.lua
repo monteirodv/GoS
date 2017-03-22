@@ -117,8 +117,15 @@ end
 
 function Ezreal:Farm()
 if (myHero.mana/myHero.maxMana >= self.Menu.Farm.FarmMana:Value()/100) then
+local qMinion
 		if self:CanCast(_Q) then
-			local qMinion = self:GetFarmTarget(Q.Range)
+			for j = 1,Game.MinionCount() do
+        local minion = Game.Minion(j)
+        if minion.isTargetable and not minion.dead and minion.distance <= Q.range and minion.team ~= myHero.team then
+            Qminion = minion
+            break
+        end
+    end
 			if qMinion then
 				local qMinPos = qMinion:GetPrediction(Q.Speed, Q.Delay)
 					    Control.SetCursorPos(qMinPos)
@@ -224,17 +231,7 @@ function Ezreal:GetTarget(range)
     return target
 end
 
-function Ezreal:GetFarmTarget(range)
-    local target
-    for j = 1,Game.MinionCount() do
-        local minion = Game.Minion(j)
-        if minion.isTargetable and not minion.dead and minion.distance <= Q.range and minion.team ~= myHero.team then
-            target = minion
-            break
-        end
-    end
-    return target
-end
+
 
 function Ezreal:GetPercentHP(unit)
     return 100 * unit.health / unit.maxHealth
