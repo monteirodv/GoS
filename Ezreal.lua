@@ -111,6 +111,7 @@ self:CastW(castPos)
 end
 end
 end
+end
 
 function Ezreal:Farm()
 if Menu.Key.FarmQ:Value() and (myHero.mana/myHero.maxMana >= Menu.Farm.FarmMana:Value()/100) then
