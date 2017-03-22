@@ -203,7 +203,9 @@ function Ezreal:HasBuff(unit, buffname)
     end
     return false
 end
-
+function Ezreal:IsValidTarget(obj, spellRange)
+    return obj ~= nil and obj.valid and obj.visible and not obj.dead and obj.isTargetable and obj.distance <= spellRange
+end
 function Ezreal:GetBuffs(unit)
     self.T = {}
     for i = 0, unit.buffCount do
