@@ -89,7 +89,7 @@ function CanCast(spellSlot)
 	return self:IsReady(spellSlot) and self:CheckMana(spellSlot)
 end
 d
-function OnTick()
+Callback.Add('Tick',function()
 
 	if Menu.Key.Combo:Value()  then
 	local qtarget = GetTarget(Q.Range)	
@@ -97,5 +97,5 @@ function OnTick()
 		CastQ(qtarget)
 	end
 	end
-end
+end)
 
