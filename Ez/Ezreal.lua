@@ -85,19 +85,12 @@ end
 end
 
 local etarget = self:GetTarget(E.range)
-if etarget and self.Menu.Combo.ComboE:Value() and self:CanCast(_E) and etarget.distance <= Q.range then
+if etarget and self.Menu.Combo.ComboE:Value() and self:CanCast(_E)then
+if etarget:GetCollision(E.Radius, E.Speed, E.Delay) == 0 then
 local castPos = etarget:GetPrediction(E.Speed, E.Delay)
 self:CastE(castPos)
 end
 
-
-local rtarget = self:GetTarget(R.range)
-if rtarget and self.Menu.Combo.ComboR:Value() and self:CanCast(_R)then
-if rtarget:GetCollision(R.Radius, R.Speed, R.Delay) == 0 then
-local castPos = rtarget:GetPrediction(R.Speed, R.Delay)
-self:CastR(castPos)
-end
-end
 end
 
 
