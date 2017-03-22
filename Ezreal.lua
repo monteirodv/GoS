@@ -94,7 +94,7 @@ end
 
 
 function Ezreal:Harass()
-	if(myHero.mana/myHero.maxMana >= Menu.Harass.HarassMana:Value()/100) then
+	if(myHero.mana/myHero.maxMana >= self.Menu.Harass.HarassMana:Value()/100) then
 	local qtarget = self:GetTarget(Q.range)
 if qtarget and self.Menu.Harass.HarassQ:Value() and self:CanCast(_Q)then
 if qtarget:GetCollision(Q.Radius, Q.Speed, Q.Delay) == 0 then
@@ -114,7 +114,7 @@ end
 end
 
 function Ezreal:Farm()
-if Menu.Key.FarmQ:Value() and (myHero.mana/myHero.maxMana >= Menu.Farm.FarmMana:Value()/100) then
+if self.Menu.Key.FarmQ:Value() and (myHero.mana/myHero.maxMana >= self.Menu.Farm.FarmMana:Value()/100) then
 		if self:CanCast(_Q) then
 			local qMinion = GetFarmTarget(Q.Range)
 			if qMinion then
