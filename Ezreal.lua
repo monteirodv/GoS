@@ -227,9 +227,8 @@ function Ezreal:CanCast(spellSlot)
     return self:IsReady(spellSlot) and self:CheckMana(spellSlot)
 end
 
-function Ezreal:IsValidTarget(obj, spellRange)
-    return obj ~= nil and obj.valid and obj.visible and not obj.dead and obj.isTargetable and obj.distance <= spellRange
-end
+
+
 
 function OnLoad()
     Ezreal()
