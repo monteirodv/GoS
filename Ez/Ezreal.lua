@@ -114,7 +114,7 @@ end
 end
 
 function Ezreal:Farm()
-if self.Menu.FarmQ:Value() and (myHero.mana/myHero.maxMana >= self.Menu.Farm.FarmMana:Value()/100) then
+if self.Menu..Farm.FarmQ:Value() and (myHero.mana/myHero.maxMana >= self.Menu.Farm.FarmMana:Value()/100) then
 		if self:CanCast(_Q) then
 			local qMinion = GetFarmTarget(Q.Range)
 			if qMinion then
