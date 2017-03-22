@@ -22,7 +22,7 @@ Menu.Harass:MenuElement({id = "HarassQ", name = "Use Q", value = true})
 Menu.Harass:MenuElement({id = "HarassW", name = "Use W", value = true})
 Menu.Harass:MenuElement({id = "HarassMana", name = "Min. Mana", value = 70, min = 0, max = 100})
 
-Menu:MenuElement({type = MENU, id = "LaneClear", name = "Lane Clear"})
+Menu:MenuElement({type = MENU, id = "Farm", name = "Lane Clear"})
 Menu.Farm:MenuElement({id = "FarmEnable", name = "Farm using spells", value = true})
 Menu.Farm:MenuElement({id = "QClear", name = "Use Q to clear", value = true})
 Menu.Farm:MenuElement({id = "FarmMana", name = "Min. Mana", value = 60, min = 0, max = 100})
