@@ -27,7 +27,6 @@ function Ezreal:LoadMenu()
     self.Menu.Combo:MenuElement({id = "ComboQ", name = "Use Q", value = true})
     self.Menu.Combo:MenuElement({id = "ComboW", name = "Use W", value = true})
     self.Menu.Combo:MenuElement({id = "ComboE", name = "Use E offensively (AP EZ)", value = false})
-    self.Menu.Combo:MenuElement({id = "ComboR", name = "Use R", value = true})
     --[[Harass]]
     self.Menu:MenuElement({type = MENU, id = "Harass", name = "Harass Settings"})
     self.Menu.Harass:MenuElement({id = "HarassQ", name = "Use Q", value = true})
@@ -79,7 +78,7 @@ end
 local wtarget = self:GetTarget(W.range)
 if wtarget and self.Menu.Combo.ComboW:Value() and self:CanCast(_W)then
 if wtarget:GetCollision(W.Radius, W.Speed, W.Delay) == 0 then
-local castPos = wtarget:GetPrediction(R.Speed, R.Delay)
+local castPos = wtarget:GetPrediction(W.Speed, W.Delay)
 self:CastW(castPos)
 end
 end
@@ -95,11 +94,35 @@ end
 
 
 function Ezreal:Harass()
-    -- HARASS LOGIC HERE
+	if(myHero.mana/myHero.maxMana >= Menu.Harass.HarassMana:Value()/100) then
+	local qtarget = self:GetTarget(Q.range)
+if qtarget and self.Menu.Harass.HarassQ:Value() and self:CanCast(_Q)then
+if qtarget:GetCollision(Q.Radius, Q.Speed, Q.Delay) == 0 then
+local castPos = qtarget:GetPrediction(Q.Speed, Q.Delay)
+self:CastQ(castPos)
+end
+end
+
+local wtarget = self:GetTarget(W.range)
+if wtarget and self.Menu.Harass.HarassW:Value() and self:CanCast(_W)then
+if wtarget:GetCollision(W.Radius, W.Speed, W.Delay) == 0 then
+local castPos = wtarget:GetPrediction(W.Speed, W.Delay)
+self:CastW(castPos)
+end
+end
 end
 
 function Ezreal:Farm()
-    -- FARM LOGIC HERE
+if Menu.Key.FarmQ:Value() and (myHero.mana/myHero.maxMana >= Menu.Farm.FarmMana:Value()/100) then
+		if self:CanCast(_Q) then
+			local qMinion = GetFarmTarget(Q.Range)
+			if qMinion then
+				local qMinPos = qMinion:GetPrediction(Q.Speed, Q.Delay)
+					    Control.SetCursorPos(qMinPos)
+				Control.CastSpell(HK_Q, qMinPos)
+			end
+		end
+	end
 end
 
 function Ezreal:LastHit()
