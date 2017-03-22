@@ -73,6 +73,23 @@ if qtarget and self.Menu.Combo.ComboQ:Value() and self:CanCast(_Q)then
 if qtarget:GetCollision(Q.Radius, Q.Speed, Q.Delay) == 0 then
 local castPos = qtarget:GetPrediction(Q.Speed, Q.Delay)
 self:CastQ(castPos)
+
+local wtarget = self:GetTarget(W.range)
+if wtarget and self.Menu.Combo.ComboW:Value() and self:CanCast(_W)then
+if wtarget:GetCollision(W.Radius, W.Speed, W.Delay) == 0 then
+local castPos = wtarget:GetPrediction(R.Speed, R.Delay)
+self:CastW(castPos)
+
+local etarget = self:GetTarget(E.range)
+if etarget and self.Menu.Combo.ComboE:Value() and self:CanCast(_E)then
+local castPos = etarget.position
+self:CastE(castPos)
+
+local rtarget = self:GetTarget(R.range)
+if rtarget and self.Menu.Combo.ComboR:Value() and self:CanCast(_R)then
+if rtarget:GetCollision(R.Radius, R.Speed, W.Delay) == 0 then
+local castPos = wtarget:GetPrediction(R.Speed, R.Delay)
+self:CastR(castPos)
 end
 end
 
