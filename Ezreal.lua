@@ -69,7 +69,7 @@ end
 
 function Ezreal:Combo()
 local qtarget = self:GetTarget(Q.range)
-if qtarget and self.Menu.Combo.ComboQ:Value() and CanCast(_Q) and self:isTargetable(qtarget) then
+if qtarget and self.Menu.Combo.ComboQ:Value() and CanCast(_Q) and self:IsValidTarget(qtarget, Q.range) then
 if qtarget:GetCollision(Q.Radius, Q.Speed, Q.Delay) == 0 then
 local castPos = qtarget:GetPrediction(Q.Speed, Q.Delay)
 self:CastQ(castPos)
