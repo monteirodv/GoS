@@ -88,17 +88,14 @@ end
 function CanCast(spellSlot)
 	return self:IsReady(spellSlot) and self:CheckMana(spellSlot)
 end
-function Combo()
+d
+function OnTick()
+
+	if Menu.Key.Combo:Value()  then
 	local qtarget = GetTarget(Q.Range)	
 	if qtarget and Game.CanUseSpell(_Q) == READY then
 		CastQ(qtarget)
 	end
-
-end
-function OnTick()
-
-	if Menu.Key.Combo:Value()  then
-     Combo()
-	 end
+	end
 end
 
