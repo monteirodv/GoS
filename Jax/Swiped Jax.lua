@@ -90,6 +90,11 @@ if etarget and self.Menu.Combo.ComboE:Value() and qtarget.distance <= Q.Range an
 		etarget = self:GetTarget(E.range)
 		if etarget and self.Menu.Combo.ComboE:Value() and self:CanCast(_E) then
 		        Control.CastSpell(HK_E)
+local rtarget = self:GetTarget(100)
+
+if rtarget and self.Menu.Combo.ComboR:Value() and qtarget.distance <= Q.Range and self:CanCast(_R)then
+        Control.CastSpell(HK_R)
+end
 
 end
 
@@ -114,7 +119,7 @@ if wtarget and self.Menu.Harass.HarassW:Value() and qtarget.distance <= Q.Range 
 end
 end
 end
-end
+
 
 function Jax:Farm()
 if (myHero.mana/myHero.maxMana >= self.Menu.Farm.FarmMana:Value()/100) then
