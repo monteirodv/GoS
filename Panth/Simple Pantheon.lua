@@ -29,7 +29,7 @@ function Pantheon:LoadMenu()
     --[[Harass]]
     self.Menu:MenuElement({type = MENU, id = "Harass", name = "Harass Settings"})
     self.Menu.Harass:MenuElement({id = "HarassQ", name = "Use Q", value = true})
-	self.Menu.Harass:MenuElement({id = "HarassE", name = "Use Q", value = true})
+	self.Menu.Harass:MenuElement({id = "HarassE", name = "Use W", value = true})
     self.Menu.Harass:MenuElement({id = "HarassMana", name = "Min. Mana", value = 40, min = 0, max = 100})
 
 
@@ -62,9 +62,10 @@ function Pantheon:Tick()
 end
 
 function Pantheon:Combo()
+
 local qtarget = self:GetTarget(Q.range)
 
-if qtarget and self.Menu.Combo.ComboQ:Value() and self:CanCast(_Q)then
+if qtarget and self.Menu.Combo.ComboQ:Value()and qtarget.distance <= Q.Range and self:CanCast(_Q)then
 local castPos = qtarget
 self:CastQ(castPos)
 end
@@ -72,19 +73,19 @@ end
 
 local wtarget = self:GetTarget(W.range)
 
-if wtarget and self.Menu.Combo.ComboW:Value() and self:CanCast(_W)then
+if wtarget and self.Menu.Combo.ComboW:Value()and wtarget.distance <= W.Range and self:CanCast(_W)then
 local castPos = wtarget
 self:CastW(castPos)
 end
 
 
-local etarget = self:GetTarget(E.range)
-if etarget and self.Menu.Combo.ComboE:Value() and not self:CanCast(_W) and self:CanCast(_E)then
+if etarget and self.Menu.Combo.ComboE:Value()and etarget.distance <= E.Range and self:CanCast(_E)then
 local castPos = etarget
 self:CastE(castPos)
 end
-
 end
+
+
 
 
 
