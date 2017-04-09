@@ -21,7 +21,10 @@ end
 
 function Jax:LoadMenu()
     self.Menu = MenuElement({type = MENU, id = "Jax", name = ""})
-
+    self.Menu:MenuElement({type = MENU, id = "Keys", name = "Key Settings"})
+    self.Menu.Key:MenuElement({id = "Combo", name = "Combo", key = string.byte(" ")})
+    self.Menu.Key:MenuElement({id = "Harass", name = "Harass", key = string.byte("S")})
+    self.Menu.Key:MenuElement({id = "Farm", name = "Farm", key = string.byte("V")})
     --[[Combo]]
     self.Menu:MenuElement({type = MENU, id = "Combo", name = "Combo Settings"})
     self.Menu.Combo:MenuElement({id = "ComboQ", name = "Use Q", value = true})
@@ -56,11 +59,11 @@ function Jax:Tick()
 
     -- Put everything you want to update every time the game ticks here (don't put too many calculations here or you'll drop FPS)
 
-    if self:Mode() == "Combo" then
-        self:Combo()
-    elseif self:Mode() == "Harass" then
+if self.Menu.Key.Combo:Value() then    
+     self:Combo()
+    if self.Menu.Key.Harass:Value() then
         self:Harass()
-    elseif self:Mode() == "Farm" then
+    if self.Menu.Key.Farm:Value() then
         self:Farm()
     elseif self:Mode() == "LastHit" then
         self:LastHit()
