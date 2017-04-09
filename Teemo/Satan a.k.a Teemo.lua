@@ -23,6 +23,11 @@ function Teemo:LoadMenu()
     self.Menu = MenuElement({type = MENU, id = "Teemo", name = "Teemo - The Swift Scout", leftIcon="http://orig10.deviantart.net/0a20/f/2013/075/3/9/teemo___classic_by_tanaka89-d5y84or.png"})
 
     --[[Combo]]
+    self.Menu:MenuElement({type = MENU, id = "Keys", name = "Key Settings"})
+    self.Menu.Key:MenuElement({id = "Combo", name = "Combo", key = string.byte(" ")})
+    self.Menu.Key:MenuElement({id = "Harass", name = "Harass", key = string.byte("S")})
+    self.Menu.Key:MenuElement({id = "Farm", name = "Farm", key = string.byte("V")})
+
     self.Menu:MenuElement({type = MENU, id = "Combo", name = "Combo Settings"})
     self.Menu.Combo:MenuElement({id = "ComboQ", name = "Use Q", value = true})
     self.Menu.Combo:MenuElement({id = "ComboW", name = "Use W", value = false})
@@ -54,11 +59,11 @@ function Teemo:Tick()
 
     -- Put everything you want to update every time the game ticks here (don't put too many calculations here or you'll drop FPS)
 
-    if self:Mode() == "Combo" then
-        self:Combo()
-    elseif self:Mode() == "Harass" then
+if self.Menu.Key.Combo:Value() then    
+     self:Combo()
+    if self.Menu.Key.Harass:Value() then
         self:Harass()
-    elseif self:Mode() == "Farm" then
+    if self.Menu.Key.Farm:Value() then
         self:Farm()
     elseif self:Mode() == "LastHit" then
         self:LastHit()
