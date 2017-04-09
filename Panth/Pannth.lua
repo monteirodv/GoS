@@ -22,6 +22,9 @@ function Pantheon:LoadMenu()
     self.Menu = MenuElement({type = MENU, id = "Pantheon", name = "Pantheon - The artisan of war", leftIcon="http://images1.wikia.nocookie.net/__cb20100121071638/leagueoflegends/images/9/9b/PantheonSquare.png"})
 
     --[[Combo]]
+	    self.Menu:MenuElement({type = MENU, id = "Keys", name = "Key Settings"})
+    self.Menu.Key:MenuElement({id = "Combo", name = "Combo", key = string.byte(" ")})
+    self.Menu.Key:MenuElement({id = "Harass", name = "Harass", key = string.byte("S")})
     self.Menu:MenuElement({type = MENU, id = "Combo", name = "Combo Settings"})
     self.Menu.Combo:MenuElement({id = "ComboQ", name = "Use Q", value = true})
     self.Menu.Combo:MenuElement({id = "ComboW", name = "Use W", value = true})
@@ -50,11 +53,11 @@ function Pantheon:Tick()
 
     -- Put everything you want to update every time the game ticks here (don't put too many calculations here or you'll drop FPS)
 
-    if self:Mode() == "Combo" then
-        self:Combo()
-    elseif self:Mode() == "Harass" then
+if self.Menu.Key.Combo:Value() then    
+     self:Combo()
+    if self.Menu.Key.Harass:Value() then
         self:Harass()
-    elseif self:Mode() == "Farm" then
+    if self.Menu.Key.Farm:Value() then
         self:Farm()
     elseif self:Mode() == "LastHit" then
         self:LastHit()
