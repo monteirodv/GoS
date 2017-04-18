@@ -55,13 +55,13 @@ function Ezreal:Tick()
 
     -- Put everything you want to update every time the game ticks here (don't put too many calculations here or you'll drop FPS)
 
-    if self:Mode() == "Combo" then
+if GOS:GetMode() == "Combo" then 
         self:Combo()
-    elseif self:Mode() == "Harass" then
+if GOS:GetMode() == "Harass" then 
         self:Harass()
-    elseif self:Mode() == "Farm" then
+if GOS:GetMode() == "Farm" then 
         self:Farm()
-    elseif self:Mode() == "LastHit" then
+if GOS:GetMode() == "LastHit" then 
         self:LastHit()
     end
 end
