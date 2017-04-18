@@ -53,13 +53,13 @@ function Pantheon:Tick()
 
     -- Put everything you want to update every time the game ticks here (don't put too many calculations here or you'll drop FPS)
 
-if self.Menu.Key.Combo:Value() then    
-     self:Combo()
-    if self.Menu.Key.Harass:Value() then
+if GOS:GetMode() == "Combo" then 
+        self:Combo()
+if GOS:GetMode() == "Harass" then 
         self:Harass()
-    if self.Menu.Key.Farm:Value() then
+if GOS:GetMode() == "Farm" then 
         self:Farm()
-    elseif self:Mode() == "LastHit" then
+if GOS:GetMode() == "LastHit" then 
         self:LastHit()
     end
 end
