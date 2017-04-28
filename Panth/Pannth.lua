@@ -55,11 +55,11 @@ function Pantheon:Tick()
 
 if GOS:GetMode() == "Combo" then 
         self:Combo()
-if GOS:GetMode() == "Harass" then 
+elseif GOS:GetMode() == "Harass" then 
         self:Harass()
-if GOS:GetMode() == "Farm" then 
+elseif GOS:GetMode() == "Farm" then 
         self:Farm()
-if GOS:GetMode() == "LastHit" then 
+elseif GOS:GetMode() == "LastHit" then 
         self:LastHit()
     end
 end
